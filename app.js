@@ -2,7 +2,7 @@ var express = require('express');
 var request = require('request');
 var cors = require('cors');
 var xml2js = require('xml2js');
-var parser = require('node-feedparser');
+var parser2 = require('node-feedparser');
 
 var app = express();
 app.use(cors());
@@ -38,6 +38,19 @@ app.get('/', function(req, res) {
     });
   });
 });
+
+
+/*FeedParser Test Code*/
+app.get('/feedparser', function(req,res){
+var url = req.query.url;
+  request url,(error, resp, body)->
+          parser2 body, (error, ret)->
+            console.log(error)
+            console.log(ret)
+}
+
+
+/*END FeedParser Test Code*/
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
