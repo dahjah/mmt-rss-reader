@@ -10,7 +10,7 @@ app.set('port', (process.env.PORT || 5000));
 
 app.get('/', function(req, res) {
   var count = req.query.count || 15;
-  var url = 'https://traveled-entrapment.000webhostapp.com/index.php/feed/';
+  var url = req.query.url;
 
   request(url, function(err, response, body) {
     if (err) {
