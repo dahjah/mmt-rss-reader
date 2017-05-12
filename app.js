@@ -13,7 +13,7 @@ app.set('port', (process.env.PORT || 5000));
 app.get('/feedparser', function(req1,res1){
 var url = req1.query.url;
 var req = request(url);
-var feedparser = new FeedParser([options]);
+var feedparser = new FeedParser();
 
 req.on('error', function (error) {
   console.log('error1');
