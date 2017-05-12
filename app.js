@@ -43,8 +43,8 @@ app.get('/', function(req, res) {
 /*FeedParser Test Code*/
 app.get('/feedparser', function(req,res){
 var url = req.query.url;
-  request url,(error, resp, body)->
-          parser2 body, (error, ret)->
+  request(url,(error, resp, body))->
+          parser2(body, (error, ret))->
             console.log(error)
             console.log(ret)
 }
