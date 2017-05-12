@@ -2,6 +2,7 @@ var express = require('express');
 var request = require('request');
 var cors = require('cors');
 var xml2js = require('xml2js');
+var parser = require('node-feedparser');
 
 var app = express();
 app.use(cors());
