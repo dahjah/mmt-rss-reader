@@ -51,7 +51,6 @@ feedparser.on('end', function () {
   var finalResponse = {};
   finalResponse.entries = collection;
   finalResponse.meta = meta;
-    console.log(collection);
   res1.send(finalResponse);
 });
 });
