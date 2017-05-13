@@ -1,14 +1,16 @@
-# rss2js
+# Monumetric RSS Reader
 
-Convert an RSS XML feed into JSON. This is a replacement for the now-deprecated Google Feed API.
+Convert an RSS feed into an object containing all entries and metadata for the feed. While This acts similarly to the now-deprecated Google Feeds API, it functions slightly differently. If you need a drop in replacement for that, please see the feednami project, which functions very similarly to mmt-rss-reader, but has an option for google feed api formatting.
+
+This is based loosely on the rss2js project found here: https://github.com/mapsam/rss2js.
+
+
 
 # Usage
 
-```shell
-npm install
-npm start # localhost:5000
-```
+Just make an HTTP GET request to mmt-rss-reader.herokuapp.com/feedparser?url=https://Your.URL.HERE.com
 
-Example URL: `https://groups.google.com/forum/feed/cugos/topics/rss.xml?num=15`
+Please only use the above url for testing purposes. For production use, please deploy the app on your own heroku instance:
 
-Head over to mmt-rss-reader.herokuapp.com?url=https://groups.google.com/forum/feed/cugos/topics/rss.xml?num=15 and you'll see a JSON response.
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
