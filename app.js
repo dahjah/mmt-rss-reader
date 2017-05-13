@@ -43,7 +43,7 @@ feedparser.on('readable', function () {
   while (item = stream.read()) {
     console.log(item);
   }
-  return stream;
+  res1.send(stream);
 });
 });
 /*END FeedParser Test Code*/
