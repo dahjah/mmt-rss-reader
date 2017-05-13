@@ -43,6 +43,10 @@ console.log('-------------------------------------');
   while (item = stream.read()) {
     console.log(item);
   }
+feedparser.on('end', function(){
+var stream = this;
+  res1.send(stream);
+}
 });
 });
 /*END FeedParser Test Code*/
