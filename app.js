@@ -9,6 +9,7 @@ app.use(cors());
 module.exports.app = app;
 app.set('port', (process.env.PORT || 5000));
 
+var testing = [];
 /*FeedParser Test Code*/
 app.get('/feedparser', function(req1,res1){
 var url = req1.query.url;
@@ -42,8 +43,9 @@ feedparser.on('readable', function () {
 console.log('-------------------------------------');
   while (item = stream.read()) {
     console.log(item);
+    testing.push(item);
   }
-feedparser.on('end', function(){
+feedparser.on('finish', function(){
 var stream = this;
   res1.send(stream);
 });
