@@ -16,8 +16,11 @@ var url = req1.query.url;
 var req = request(url);
 var feedparser = new FeedParser();
 
+//suggestion
+var collection = [];
+
 req.on('error', function (error) {
-  console.log('error1');
+  // handle any request errors
 });
 
 req.on('response', function (res) {
@@ -32,7 +35,7 @@ req.on('response', function (res) {
 });
 
 feedparser.on('error', function (error) {
-  console.log('error2');
+  // always handle errors
 });
 
 feedparser.on('readable', function () {
@@ -40,15 +43,17 @@ feedparser.on('readable', function () {
   var stream = this; // `this` is `feedparser`, which is a stream
   var meta = this.meta; // **NOTE** the "meta" is always available in the context of the feedparser instance
   var item;
-console.log('-------------------------------------');
+
   while (item = stream.read()) {
     console.log(item);
-    testing.push(item);
+    collection.push(item);    //array of objects
   }
-feedparser.on('finish', function(){
-var stream = this;
-  res1.send(stream);
 });
+
+//suggestion
+feedparser.on('end', function () {
+    console.log(collection);
+    //example usage: process data as collection for SQL usage
 });
 });
 /*END FeedParser Test Code*/
