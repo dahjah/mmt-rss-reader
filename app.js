@@ -10,11 +10,10 @@ module.exports.app = app;
 app.set('port', (process.env.PORT || 5000));
 
 /*FeedParser Test Code*/
-var sent = false;
 app.get('/feedparser', function(req1,res1){
 var url = req1.query.url;
 var req = request(url);
-var feedparser = new FeedParser();
+var feedparser = new FeedParser([options]);
 
 req.on('error', function (error) {
   console.log('error1');
@@ -40,14 +39,9 @@ feedparser.on('readable', function () {
   var stream = this; // `this` is `feedparser`, which is a stream
   var meta = this.meta; // **NOTE** the "meta" is always available in the context of the feedparser instance
   var item;
-  var response;
+
   while (item = stream.read()) {
     console.log(item);
-    response.push(item);
-  }
-  if(sent == false){
-    sent = true;
-  res1.send(stream);
   }
 });
 });
