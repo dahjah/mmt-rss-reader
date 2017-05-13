@@ -53,6 +53,7 @@ feedparser.on('readable', function () {
 //suggestion
 feedparser.on('end', function () {
     console.log(collection);
+  res1.send(collection);
     //example usage: process data as collection for SQL usage
 });
 });
