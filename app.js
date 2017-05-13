@@ -48,7 +48,7 @@ feedparser.on('readable', function () {
 });
 /*END FeedParser Test Code*/
 
-app.get('/', function(req, res) {
+/*app.get('/', function(req, res) {
   var count = req.query.count || 15;
   var url = req.query.url;
 
@@ -77,7 +77,7 @@ app.get('/', function(req, res) {
     });
   });
 });
-
+*/
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
