@@ -44,7 +44,7 @@ feedparser.on('readable', function () {
     console.log(item);
     response.push(item);
   }
-  res1.send(response);
+  res1.send(item);
 });
 });
 /*END FeedParser Test Code*/
