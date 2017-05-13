@@ -46,7 +46,7 @@ console.log('-------------------------------------');
 feedparser.on('end', function(){
 var stream = this;
   res1.send(stream);
-}
+});
 });
 });
 /*END FeedParser Test Code*/
