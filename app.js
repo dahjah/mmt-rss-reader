@@ -52,8 +52,13 @@ feedparser.on('readable', function () {
 
 //suggestion
 feedparser.on('end', function () {
+  var stream = this;
+  var meta = this.meta;
+  var finalResponse = {};
+  finalResponse.entries = collection;
+  finalResponse.meta = meta;
     console.log(collection);
-  res1.send(collection);
+  res1.send(finalResponse);
     //example usage: process data as collection for SQL usage
 });
 });
