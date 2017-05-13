@@ -47,7 +47,7 @@ feedparser.on('readable', function () {
   }
   if(sent == false){
     sent = true;
-  res1.send(item);
+  res1.send(stream);
   }
 });
 });
