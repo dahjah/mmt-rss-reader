@@ -10,6 +10,7 @@ module.exports.app = app;
 app.set('port', (process.env.PORT || 5000));
 
 /*FeedParser Test Code*/
+var sent = false;
 app.get('/feedparser', function(req1,res1){
 var url = req1.query.url;
 var req = request(url);
@@ -44,7 +45,10 @@ feedparser.on('readable', function () {
     console.log(item);
     response.push(item);
   }
+  if(sent == false){
+    sent = true;
   res1.send(item);
+  }
 });
 });
 /*END FeedParser Test Code*/
