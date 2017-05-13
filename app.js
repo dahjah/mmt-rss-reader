@@ -16,11 +16,10 @@ var url = req1.query.url;
 var req = request(url);
 var feedparser = new FeedParser();
 
-//suggestion
 var collection = [];
 
 req.on('error', function (error) {
-  // handle any request errors
+  console.error(error);
 });
 
 req.on('response', function (res) {
@@ -33,24 +32,20 @@ req.on('response', function (res) {
     stream.pipe(feedparser);
   }
 });
-
 feedparser.on('error', function (error) {
-  // always handle errors
+  console.error(error);
 });
 
 feedparser.on('readable', function () {
-  // This is where the action is!
   var stream = this; // `this` is `feedparser`, which is a stream
   var meta = this.meta; // **NOTE** the "meta" is always available in the context of the feedparser instance
   var item;
-
+//Add articles to collection
   while (item = stream.read()) {
-    console.log(item);
     collection.push(item);    //array of objects
   }
 });
 
-//suggestion
 feedparser.on('end', function () {
   var stream = this;
   var meta = this.meta;
@@ -59,41 +54,10 @@ feedparser.on('end', function () {
   finalResponse.meta = meta;
     console.log(collection);
   res1.send(finalResponse);
-    //example usage: process data as collection for SQL usage
 });
 });
 /*END FeedParser Test Code*/
 
-/*app.get('/', function(req, res) {
-  var count = req.query.count || 15;
-  var url = req.query.url;
-
-  request(url, function(err, response, body) {
-    if (err) {
-      res.status(err.code || 400);
-      return res.json({message: 'error fetching url', error: err.message});
-    }
-
-    if (response.statusCode !== 200) {
-      res.status(response.statusCode);
-      return res.json({message: 'unable to fetch url', code: response.statusCode});
-    }
-
-    var parser = new xml2js.Parser({
-      explicitArray: false
-    });
-
-    parser.parseString(body, function (err, result) {
-      if (err) {
-        res.status(err.code || 400);
-        return res.json({message: 'unable to parse XML'});
-      }
-
-      return res.json(result).channel;
-    });
-  });
-});
-*/
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
